@@ -27,10 +27,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getOfferById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idOffer" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getOfferByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="getOfferByIdResult" nillable="true" type="q3:Offer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateAuction">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="autcion" nillable="true" type="q3:Auction" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="autcion" nillable="true" type="q4:Auction" />
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -45,7 +60,7 @@
   <xs:element name="AddAutcion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="auction" nillable="true" type="q4:Auction" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="auction" nillable="true" type="q5:Auction" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -66,14 +81,14 @@
   <xs:element name="getOffersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="getOffersResult" nillable="true" type="q5:ArrayOfOffer" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="getOffersResult" nillable="true" type="q6:ArrayOfOffer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="addOffer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="offer" nillable="true" type="q6:Offer" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="offer" nillable="true" type="q7:Offer" />
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -104,7 +119,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="auctionId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="offerId" nillable="true" type="xs:string" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="offer" nillable="true" type="q7:Offer" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="offer" nillable="true" type="q8:Offer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

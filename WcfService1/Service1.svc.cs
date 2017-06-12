@@ -142,6 +142,21 @@ namespace WcfService1
             return auctions.Find(b => b.ID == intId);
         }
 
+        public Offer getOfferById(string id, string idOffer)
+        {
+            int auctionId = int.Parse(id);
+            int index = auctions.FindIndex(b => b.ID == auctionId);
+            if (index != -1)
+            {
+                int offerId = int.Parse(idOffer);
+                return auctions[index].Offerts.Find(c => c.OfferId == offerId);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public List<Offer> getOffers(string id)
         {
             int auctionId = int.Parse(id);

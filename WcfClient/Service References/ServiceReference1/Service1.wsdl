@@ -19,6 +19,12 @@
   <wsdl:message name="IService1_getById_OutputMessage">
     <wsdl:part name="parameters" element="tns:getByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getOfferById_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOfferById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getOfferById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOfferByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_UpdateAuction_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateAuction" />
   </wsdl:message>
@@ -76,6 +82,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getById" message="tns:IService1_getById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getByIdResponse" message="tns:IService1_getById_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getOfferById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getOfferById" message="tns:IService1_getOfferById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getOfferByIdResponse" message="tns:IService1_getOfferById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateAuction">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAuction" message="tns:IService1_UpdateAuction_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAuctionResponse" message="tns:IService1_UpdateAuction_OutputMessage" />
@@ -122,6 +132,15 @@
     </wsdl:operation>
     <wsdl:operation name="getById">
       <soap:operation soapAction="http://tempuri.org/IService1/getById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOfferById">
+      <soap:operation soapAction="http://tempuri.org/IService1/getOfferById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -49,13 +49,9 @@ namespace WcfClient.Controllers
         // GET: Auctions/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
             Auction aukcja = obj.getById(id.ToString());
-            if(aukcja == null)
+            if (aukcja == null)
             {
                 return HttpNotFound();
             }
@@ -116,7 +112,34 @@ namespace WcfClient.Controllers
             return View(obj.getOffers(id.ToString()));
         }
 
+        // GET: Auctions/id/OffersCreate
         public ActionResult CreateOffer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            return View();
+        }
+        // POST: Auctions/id/Offers/Create
+        [HttpPost]
+        public ActionResult CreateOffer(int id, [Bind(Include = "offerId,auction,price,date")]Offer offer)
+        {
+            try
+            {
+                ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+                obj.addOffer(offer, id.ToString());
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Auctions/Edit/5
+        public ActionResult OfferEdit(int? id, int? offerId)
         {
             if (id == null)
             {
@@ -128,23 +151,59 @@ namespace WcfClient.Controllers
             {
                 return HttpNotFound();
             }
+            Offer oferta = obj.getOfferById(id.ToString(), offerId.ToString());
+            if(oferta == null)
+            {
+                return HttpNotFound();
+            }
             return View(aukcja);
         }
 
-        // POST: Auctions/id/Offers/Create
+        // POST: Auctions/5/Offers/5
         [HttpPost]
-        public ActionResult CreateOffer(int id, [Bind(Include = "offerId,auction,price,date")]Offer offer)
+        public ActionResult OfferEdit(int id, int offerId, [Bind(Include = "offerId,auction,price,date")]Offer offer)
         {
             try
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
-                Auction aukcja = obj.getById(id.ToString());
-                if(aukcja.EndDate >= DateTime.Now || aukcja.Finished)
-                {
-                    return HttpNotFound();
-                }
-                obj.addOffer(offer, id.ToString());
-                return RedirectToAction("OffersIndex");
+                obj.UpdateOffer(offerId.ToString(), id.ToString(), offer);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult DeleteOffer(int? id, int? offerId)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            Auction aukcja = obj.getById(id.ToString());
+            if (aukcja == null)
+            {
+                return HttpNotFound();
+            }
+            Offer oferta = obj.getOfferById(id.ToString(), offerId.ToString());
+            if (oferta == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aukcja);
+        }
+
+        // POST: Auctions/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteOfferConfirmed(int id, int idOffer)
+        {
+            try
+            {
+                ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+                obj.deleteOffer(id.ToString(), idOffer.ToString());
+                return RedirectToAction("Index");
             }
             catch
             {

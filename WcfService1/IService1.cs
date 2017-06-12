@@ -21,6 +21,10 @@ namespace WcfService1
         Auction getById(string id);
 
         [OperationContract]
+        [WebGet(UriTemplate = "auctions/{id}/offers/{idOffer}", ResponseFormat = WebMessageFormat.Json)]
+        Offer getOfferById(string id, string idOffer);
+
+        [OperationContract]
         [WebInvoke(UriTemplate = "auctions/{id}", Method = "PUT", ResponseFormat = WebMessageFormat.Json)]
         string UpdateAuction(Auction autcion, string id);
 

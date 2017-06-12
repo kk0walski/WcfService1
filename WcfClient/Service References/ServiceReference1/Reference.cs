@@ -247,6 +247,12 @@ namespace WcfClient.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getById", ReplyAction="http://tempuri.org/IService1/getByIdResponse")]
         System.Threading.Tasks.Task<WcfClient.ServiceReference1.Auction> getByIdAsync(string id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOfferById", ReplyAction="http://tempuri.org/IService1/getOfferByIdResponse")]
+        WcfClient.ServiceReference1.Offer getOfferById(string id, string idOffer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOfferById", ReplyAction="http://tempuri.org/IService1/getOfferByIdResponse")]
+        System.Threading.Tasks.Task<WcfClient.ServiceReference1.Offer> getOfferByIdAsync(string id, string idOffer);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAuction", ReplyAction="http://tempuri.org/IService1/UpdateAuctionResponse")]
         string UpdateAuction(WcfClient.ServiceReference1.Auction autcion, string id);
         
@@ -337,6 +343,14 @@ namespace WcfClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<WcfClient.ServiceReference1.Auction> getByIdAsync(string id) {
             return base.Channel.getByIdAsync(id);
+        }
+        
+        public WcfClient.ServiceReference1.Offer getOfferById(string id, string idOffer) {
+            return base.Channel.getOfferById(id, idOffer);
+        }
+        
+        public System.Threading.Tasks.Task<WcfClient.ServiceReference1.Offer> getOfferByIdAsync(string id, string idOffer) {
+            return base.Channel.getOfferByIdAsync(id, idOffer);
         }
         
         public string UpdateAuction(WcfClient.ServiceReference1.Auction autcion, string id) {
