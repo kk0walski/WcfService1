@@ -131,7 +131,6 @@ namespace WcfClient.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
             return View();
         }
         // POST: Auctions/id/Offers/Create
@@ -141,8 +140,16 @@ namespace WcfClient.Controllers
             try
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
-                obj.addOffer(offer, id.ToString());
-                return RedirectToAction("Index");
+                Auction aukcja = obj.getById(id.ToString());
+                if (offer != null && aukcja.EndDate < offer.Date)
+                {
+                    obj.addOffer(offer, id.ToString());
+                    return RedirectToAction("OffersIndex");
+                }
+                else
+                {
+                    throw new InvalidOperationException("Wrong date or null object");
+                }
             }
             catch
             {
@@ -155,7 +162,7 @@ namespace WcfClient.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return HttpNotFound();
             }
             ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
             Auction aukcja = obj.getById(id.ToString());
@@ -178,8 +185,16 @@ namespace WcfClient.Controllers
             try
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
-                obj.UpdateOffer(offerId.ToString(), id.ToString(), offer);
-                return RedirectToAction("Index");
+                Auction aukcja = obj.getById(id.ToString());
+                if (offer != null && aukcja.EndDate < offer.Date)
+                {
+                    obj.UpdateOffer(offerId.ToString(), id.ToString(), offer);
+                    return RedirectToAction("OffersIndex");
+                }
+                else
+                {
+                    throw new InvalidOperationException("Wrong date or null object");
+                }
             }
             catch
             {
@@ -214,8 +229,17 @@ namespace WcfClient.Controllers
             try
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
-                obj.deleteOffer(id.ToString(), idOffer.ToString());
-                return RedirectToAction("Index");
+                Auction aukcja = obj.getById(id.ToString());
+                Offer oferta = obj.getOfferById(id.ToString(), idOffer.ToString());
+                if (oferta != null && aukcja.EndDate < oferta.Date && !aukcja.Finished)
+                {
+                    obj.deleteOffer(id.ToString(), idOffer.ToString());
+                    return RedirectToAction("OffersIndex");
+                }
+                else
+                {
+                    throw new InvalidOperationException("You are trying to delete object after finish licitation");
+                }
             }
             catch
             {
