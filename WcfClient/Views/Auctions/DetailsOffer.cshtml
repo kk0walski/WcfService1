@@ -1,0 +1,42 @@
+﻿@model WcfClient.ServiceReference1.Offer
+
+@{
+    ViewBag.Title = "DetailsOffer";
+}
+
+<h2>DetailsOffer</h2>
+
+<div>
+    <h4>Offer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Auction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "OfferEdit", new { id = Model.OfferId }) |
+    @Html.ActionLink("Back to List", "OffersIndex")
+</p>

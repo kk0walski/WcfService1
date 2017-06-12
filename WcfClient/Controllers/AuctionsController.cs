@@ -112,6 +112,13 @@ namespace WcfClient.Controllers
             return View(obj.getOffers(id.ToString()));
         }
 
+        // GET: Auctions/5/Offers/Details/3
+        public ActionResult DetailsOffer(int id, int offerId)
+        {
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            return View(obj.getOfferById(id.ToString(), offerId.ToString()));
+        }
+
         // GET: Auctions/id/OffersCreate
         public ActionResult CreateOffer(int? id)
         {
