@@ -148,7 +148,8 @@ namespace WcfClient.Controllers
                 }
                 else
                 {
-                    throw new HttpException((int)HttpStatusCode.BadRequest, "Wrong date or null offer");
+                    ModelState.AddModelError("Offer", "Bad offer informations");
+                    return View(offer);
                 }
             }
             catch
@@ -193,7 +194,8 @@ namespace WcfClient.Controllers
                 }
                 else
                 {
-                    throw new HttpException((int)HttpStatusCode.BadRequest, "Wrong date or null offer");
+                    ModelState.AddModelError("Offer", "Wrong date or null ofer");
+                    return View(offer);
                 }
             }
             catch
@@ -238,7 +240,8 @@ namespace WcfClient.Controllers
                 }
                 else
                 {
-                    throw new HttpException((int)HttpStatusCode.BadRequest, "You are trying to delete object after finish licitation");
+                    ModelState.AddModelError("Offer", "you are trying to delete offer after auction finsished");
+                    return View(oferta);
                 }
             }
             catch
