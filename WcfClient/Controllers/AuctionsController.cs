@@ -141,14 +141,14 @@ namespace WcfClient.Controllers
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
                 Auction aukcja = obj.getById(id.ToString());
-                if (offer != null && aukcja.EndDate < offer.Date)
+                if (offer != null && aukcja.EndDate > offer.Date && !aukcja.Finished && aukcja.EndDate > DateTime.Now && offer.Date <= DateTime.Now)
                 {
                     obj.addOffer(offer, id.ToString());
                     return RedirectToAction("OffersIndex");
                 }
                 else
                 {
-                    throw new InvalidOperationException("Wrong date or null object");
+                    throw new HttpException((int)HttpStatusCode.BadRequest, "Wrong date or null offer");
                 }
             }
             catch
@@ -186,14 +186,14 @@ namespace WcfClient.Controllers
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
                 Auction aukcja = obj.getById(id.ToString());
-                if (offer != null && aukcja.EndDate < offer.Date)
+                if (offer != null && aukcja.EndDate > offer.Date && !aukcja.Finished && aukcja.EndDate > DateTime.Now && offer.Date <= DateTime.Now)
                 {
                     obj.UpdateOffer(offerId.ToString(), id.ToString(), offer);
                     return RedirectToAction("OffersIndex");
                 }
                 else
                 {
-                    throw new InvalidOperationException("Wrong date or null object");
+                    throw new HttpException((int)HttpStatusCode.BadRequest, "Wrong date or null offer");
                 }
             }
             catch
@@ -231,14 +231,14 @@ namespace WcfClient.Controllers
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
                 Auction aukcja = obj.getById(id.ToString());
                 Offer oferta = obj.getOfferById(id.ToString(), idOffer.ToString());
-                if (oferta != null && aukcja.EndDate < oferta.Date && !aukcja.Finished)
+                if (oferta != null && aukcja.EndDate > oferta.Date && !aukcja.Finished)
                 {
                     obj.deleteOffer(id.ToString(), idOffer.ToString());
                     return RedirectToAction("OffersIndex");
                 }
                 else
                 {
-                    throw new InvalidOperationException("You are trying to delete object after finish licitation");
+                    throw new HttpException((int)HttpStatusCode.BadRequest, "You are trying to delete object after finish licitation");
                 }
             }
             catch
