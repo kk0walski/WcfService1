@@ -106,8 +106,13 @@ namespace WcfClient.Controllers
             }
         }
         // GET: Auctions/id/Offers
-        public ActionResult OffersIndex(int id)
+        public ActionResult OffersIndex(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.AuctionId = id;
             ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
             return View(obj.getOffers(id.ToString()));
         }
