@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:14059/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:14059/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:14059/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_getAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAll" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getById_InputMessage">
+    <wsdl:part name="parameters" element="tns:getById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAuction_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuction" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAuction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuctionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAutcion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAutcion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAutcion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAutcionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getOffers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOffers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getOffers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addOffer_InputMessage">
+    <wsdl:part name="parameters" element="tns:addOffer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addOffer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_stopAuction_InputMessage">
+    <wsdl:part name="parameters" element="tns:stopAuction" />
+  </wsdl:message>
+  <wsdl:message name="IService1_stopAuction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:stopAuctionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateOffer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOffer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateOffer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteAuction_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAuction" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteAuction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAuctionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteOffer_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteOffer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteOffer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteOfferResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="getAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAll" message="tns:IService1_getAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAllResponse" message="tns:IService1_getAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getById" message="tns:IService1_getById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getByIdResponse" message="tns:IService1_getById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAuction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAuction" message="tns:IService1_UpdateAuction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAuctionResponse" message="tns:IService1_UpdateAuction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAutcion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddAutcion" message="tns:IService1_AddAutcion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddAutcionResponse" message="tns:IService1_AddAutcion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getOffers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getOffers" message="tns:IService1_getOffers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getOffersResponse" message="tns:IService1_getOffers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addOffer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addOffer" message="tns:IService1_addOffer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addOfferResponse" message="tns:IService1_addOffer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="stopAuction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/stopAuction" message="tns:IService1_stopAuction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/stopAuctionResponse" message="tns:IService1_stopAuction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateOffer" message="tns:IService1_UpdateOffer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateOfferResponse" message="tns:IService1_UpdateOffer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAuction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteAuction" message="tns:IService1_deleteAuction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteAuctionResponse" message="tns:IService1_deleteAuction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOffer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteOffer" message="tns:IService1_deleteOffer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteOfferResponse" message="tns:IService1_deleteOffer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAll">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getById">
+      <soap:operation soapAction="http://tempuri.org/IService1/getById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAuction">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAuction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutcion">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddAutcion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOffers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getOffers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOffer">
+      <soap:operation soapAction="http://tempuri.org/IService1/addOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopAuction">
+      <soap:operation soapAction="http://tempuri.org/IService1/stopAuction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAuction">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteAuction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOffer">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:14059/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
