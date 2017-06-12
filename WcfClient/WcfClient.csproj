@@ -303,6 +303,8 @@
     <Content Include="Views\Auctions\Details.cshtml" />
     <Content Include="Views\Auctions\Edit.cshtml" />
     <Content Include="Views\Auctions\Delete.cshtml" />
+    <Content Include="Views\Auctions\OffersIndex.cshtml" />
+    <Content Include="Views\Auctions\CreateOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

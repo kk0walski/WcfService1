@@ -109,5 +109,42 @@ namespace WcfClient.Controllers
                 return View();
             }
         }
+        // GET: Auctions/id/Offers
+        public ActionResult OffersIndex(int id)
+        {
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            return View(obj.getOffers(id.ToString()));
+        }
+
+        public ActionResult CreateOffer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            Auction aukcja = obj.getById(id.ToString());
+            if (aukcja == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aukcja);
+        }
+
+        // POST: Auctions/id/Offers/Create
+        [HttpPost]
+        public ActionResult CreateOffer(int id, [Bind(Include = "offerId,auction,price,date")]Offer offer)
+        {
+            try
+            {
+                ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+                obj.addOffer(offer, id.ToString());
+                return RedirectToAction("OffersIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

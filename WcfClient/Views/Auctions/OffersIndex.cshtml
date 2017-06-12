@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WcfClient.ServiceReference1.Offer>
+
+@{
+    ViewBag.Title = "OffersIndex";
+}
+
+<h2>OffersIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateOffer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Auction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "OffersEdit", new { id=item.OfferId }) |
+            @Html.ActionLink("Details", "OffersDetails", new { id=item.OfferId }) |
+            @Html.ActionLink("Delete", "OffersDelete", new { id=item.OfferId })
+        </td>
+    </tr>
+}
+
+</table>
