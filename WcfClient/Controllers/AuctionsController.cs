@@ -138,6 +138,11 @@ namespace WcfClient.Controllers
             try
             {
                 ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+                Auction aukcja = obj.getById(id.ToString());
+                if(aukcja.EndDate >= DateTime.Now || aukcja.Finished)
+                {
+                    return HttpNotFound();
+                }
                 obj.addOffer(offer, id.ToString());
                 return RedirectToAction("OffersIndex");
             }
