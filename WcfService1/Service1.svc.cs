@@ -20,6 +20,7 @@ namespace WcfService1
             {
                 return "You are trying to add null";
             }
+            auction.Offerts = new List<Offer>();
             int lenght = auctions.Count;
             auction.ID = lenght;
             auctions.Add(auction);
